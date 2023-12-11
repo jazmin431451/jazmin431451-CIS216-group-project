@@ -47,28 +47,28 @@ class EditMenu(tk.Menu):
         tk.Menu.__init__(self, root, *args, **kwargs)
         self.add_command(label="Undo", command=undo)
         self.add_command(label="Redo", command=redo)
-        self.add_command(label="Add Map Marker", command=add_marker)
+        self.add_command(label="Add Map Marker", command=self.add_marker)
 
 class ViewMenu(tk.Menu):
     def __init__(self, root, *args, **kwargs):
         tk.Menu.__init__(self, root, *args, **kwargs)
-        self.add_command(label="Zoom In", command=zoom_in)
-        self.add_command(label="Zoom Out", command=zoom_out)
-        self.add_command(label="Compass", command=compass)
+        self.add_command(label="Zoom In", command=self.zoom_in)
+        self.add_command(label="Zoom Out", command=self.zoom_out)
+        self.add_command(label="Compass", command=self.compass)
 
 class ToolsAndSettingsMenu(tk.Menu):
     def __init__(self, root, *args, **kwargs):
         tk.Menu.__init__(self, root, *args, **kwargs)
-        self.add_command(label="Account Settings", command=account_settings)
-        self.add_command(label="Map Settings", command=show_setting)
-        self.add_command(label="Region", command=set_region)
+        self.add_command(label="Account Settings", command=self.account_settings)
+        self.add_command(label="Map Settings", command=self.show_setting)
+        self.add_command(label="Region", command=self.set_region)
 
 class NavigationMenu(tk.Menu):
     def __init__(self, root, *args, **kwargs):
         tk.Menu.__init__(self, root, *args, **kwargs)
-        self.add_command(label="Search", command=search_location)
-        self.add_command(label="Directions", command=get_directions)
-        self.add_command(label="Nearby Places", command=get_nearby)
+        self.add_command(label="Search", command=self.search_location)
+        self.add_command(label="Directions", command=self.get_directions)
+        self.add_command(label="Nearby Places", command=self.get_nearby)
 
     
 if __name__ == "__main__":
