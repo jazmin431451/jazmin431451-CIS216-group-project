@@ -3,6 +3,30 @@ import folium
 import webbrowser
 import threading
 import tkinter as tk
+import ReportGenerator
+import tkinter as tk
+
+class TextWindow(tk.Toplevel):
+    def __init__(self, parent):
+        tk.Toplevel.__init__(self, parent)
+        self.text_widget = tk.Text(self)
+        self.text_widget.pack(fill=tk.BOTH, expand=True)
+
+class Root(tk.Tk):
+    def __init__(self, *args, **kwargs):
+
+        self.report_generator = ReportGenerator()
+        self.text_window = None
+
+        self._tools_and_settings_menu.add_command(label="Generate Report", command=self.generate_report)
+
+        self._tools_and_settings_menu.add_command(label="Open Text Window", command=self.open_text_window)
+
+def generate_report(self):
+    self.report_generator.generate_report()
+def open_text_window(self):
+    if not self.text_window:
+        self.text_window = TextWindow(self)
 
 app = Flask(__name__)
 
@@ -83,10 +107,8 @@ def create_tkinter_window():
     root.mainloop()
 
 if __name__ == "__main__":
-    # Start Flask in a separate thread
+
     flask_thread = threading.Thread(target=start_flask)
     flask_thread.start()
 
-    # Generate Tkinter window
     create_tkinter_window()
-
